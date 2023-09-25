@@ -91,12 +91,27 @@ def data_size(data_structs):
     pass
 
 
-def req_1(data_structs):
+def consultar_partidos(nombre_equipo, fecha_inicio, fecha_final):
     """
     Función que soluciona el requerimiento 1
     """
-    # TODO: Realizar el requerimiento 1
-    pass
+    partidos =[]
+
+    partidos_equipo = [a for a in partidos if (a["equipo_local"] == nombre_equipo or a["equipo visitante"] == nombre_equipo) and fecha_inicio <= a["fecha"] <= fecha_final]
+    partidos_equipo.sort(key=lambda x: x["fecha"], reverse=True)
+    total_partidos = len(partidos_equipo)
+    total_local = sum(1 for a in partidos_equipo if a["equipo_local"] == nombre_equipo)
+    total_visitante = total_partidos - total_local
+    if total_partidos > 6:
+        partidos_equipo = partidos_equipo[:3] + partidos_equipo[-3:]
+    
+    respuesta = {
+        "total_partidos": total_partidos,
+        "total_local": total_local,
+        "total_visitante": total_visitante,
+        "listado_partidos": partidos_equipo
+    }
+    return respuesta 
 
 
 def req_2(data_structs):

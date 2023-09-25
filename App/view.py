@@ -20,6 +20,7 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+from App.model import consultar_partidos
 import config as cf
 import sys
 import controller
@@ -42,9 +43,8 @@ def new_controller():
     """
         Se crea una instancia del controlador
     """
-    #TODO: Llamar la función del controlador donde se crean las estructuras de datos
-    pass
-
+    control = controller.new_controller()
+    return control
 
 def print_menu():
     print("Bienvenido")
@@ -64,6 +64,8 @@ def load_data(control):
     """
     Carga los datos
     """
+    goalscores, results, shootouts = controller.loadData(control)
+    return goalscores, results, shootouts 
     #TODO: Realizar la carga de datos
     pass
 
@@ -75,12 +77,32 @@ def print_data(control, id):
     #TODO: Realizar la función para imprimir un elemento
     pass
 
-def print_req_1(control):
+def resultado_requerimiento1(nombre_equipo, fecha_inicio, fecha_final):
     """
         Función que imprime la solución del Requerimiento 1 en consola
     """
-    # TODO: Imprimir el resultado del requerimiento 1
-    pass
+    # Llamar a la función que devuelve el resultado
+    resultado = consultar_partidos(nombre_equipo, fecha_inicio, fecha_final)
+    
+    # Imprimir resultados
+    print("Resultados para el equipo", nombre_equipo, "entre", fecha_inicio, "y", fecha_final)
+    print("-" * 50)  # línea divisoria
+    print("Total de partidos disputados:", resultado["total_partidos"])
+    print("Total de partidos disputados como local:", resultado["total_local"])
+    print("Total de partidos disputados como visitante:", resultado["total_visitante"])
+    print("-" * 50)  # línea divisoria
+    
+    print("Listado de partidos:")
+    for partido in resultado["listado_partidos"]:
+        print("Fecha:", partido["fecha"])
+        print("Equipo local:", partido["equipo_local"], "-", "Marcador:", partido["marcador_local"])
+        print("Equipo visitante:", partido["equipo_visitante"], "-", "Marcador:", partido["marcador_visitante"])
+        print("País:", partido.get("pais", "Desconocido"))
+        print("Ciudad:", partido.get("ciudad", "Desconocido"))
+        print("Torneo:", partido.get("torneo", "Desconocido"))
+        print("Goles por penales:", partido.get("penales", "Desconocido"))
+        print("Autogoles:", partido.get("autogoles", "Desconocido"))
+        print("-" * 50)  # línea divisoria
 
 
 def print_req_2(control):
@@ -156,7 +178,7 @@ if __name__ == "__main__":
             print("Cargando información de los archivos ....\n")
             data = load_data(control)
         elif int(inputs) == 2:
-            print_req_1(control)
+            resultado_requerimiento1(control)
 
         elif int(inputs) == 3:
             print_req_2(control)
