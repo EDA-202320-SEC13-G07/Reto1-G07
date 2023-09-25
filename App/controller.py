@@ -24,7 +24,7 @@ import config as cf
 import model
 import time
 import csv
-
+import controller 
 
 """
 El controlador se encarga de mediar entre la vista y el modelo.
@@ -36,7 +36,11 @@ def new_controller():
     Crea una instancia del modelo
     """
     #TODO: Llamar la función del modelo que crea las estructuras de datos
-    pass
+    control = {
+        "controller": None
+    }
+    control["controller"] = controller.newCatalog()
+    return control 
 
 
 # Funciones para la carga de datos
