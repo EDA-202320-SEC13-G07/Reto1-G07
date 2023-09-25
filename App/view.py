@@ -93,7 +93,7 @@ def print_req_2(control):
 
 def resultado_requerimiento3(nombre_equipo, fecha_inicio, fecha_final):
     """
-        Función que imprime la solución del Requerimiento 1 en consola
+        Función que imprime la solución del Requerimiento 3 en consola
     """
     # Llamar a la función que devuelve el resultado
     resultado = consultar_partidos(nombre_equipo, fecha_inicio, fecha_final)
@@ -176,7 +176,7 @@ if __name__ == "__main__":
             print("Cargando información de los archivos ....\n")
             data = load_data(control)
         elif int(inputs) == 2:
-            print_req1(control)
+            print_req_1(control)
 
         elif int(inputs) == 3:
             print_req_2(control)

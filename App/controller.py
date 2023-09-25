@@ -88,13 +88,8 @@ def req_2(control):
     pass
 
 
-def req_3(control):
-    """
-    Retorna el resultado del requerimiento 3
-    """
-    # TODO: Modificar el requerimiento 3
-    pass
-
+def obtener_resultado_requerimiento3(nombre_equipo, fecha_inicio, fecha_final):
+    return model.consultar_partidos(nombre_equipo, fecha_inicio, fecha_final)
 
 def req_4(control):
     """

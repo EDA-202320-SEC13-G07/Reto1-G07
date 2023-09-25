@@ -109,7 +109,7 @@ def req_2(data_structs):
 
 def consultar_partidos(nombre_equipo, fecha_inicio, fecha_final):
     """
-    Función que soluciona el requerimiento 1
+    Función que soluciona el requerimiento 3
     """
     partidos =[]
 
