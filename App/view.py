@@ -77,7 +77,21 @@ def print_data(control, id):
     #TODO: Realizar la función para imprimir un elemento
     pass
 
-def resultado_requerimiento1(nombre_equipo, fecha_inicio, fecha_final):
+def  print_req_1(control):
+    """
+        Función que imprime la solución del Requerimiento 2 en consola
+    """
+    # TODO: Imprimir el resultado del requerimiento 1
+    pass
+
+def print_req_2(control):
+    """
+        Función que imprime la solución del Requerimiento 2 en consola
+    """
+    # TODO: Imprimir el resultado del requerimiento 2
+    pass
+
+def resultado_requerimiento3(nombre_equipo, fecha_inicio, fecha_final):
     """
         Función que imprime la solución del Requerimiento 1 en consola
     """
@@ -103,22 +117,6 @@ def resultado_requerimiento1(nombre_equipo, fecha_inicio, fecha_final):
         print("Goles por penales:", partido.get("penales", "Desconocido"))
         print("Autogoles:", partido.get("autogoles", "Desconocido"))
         print("-" * 50)  # línea divisoria
-
-
-def print_req_2(control):
-    """
-        Función que imprime la solución del Requerimiento 2 en consola
-    """
-    # TODO: Imprimir el resultado del requerimiento 2
-    pass
-
-
-def print_req_3(control):
-    """
-        Función que imprime la solución del Requerimiento 3 en consola
-    """
-    # TODO: Imprimir el resultado del requerimiento 3
-    pass
 
 
 def print_req_4(control):
@@ -178,13 +176,13 @@ if __name__ == "__main__":
             print("Cargando información de los archivos ....\n")
             data = load_data(control)
         elif int(inputs) == 2:
-            resultado_requerimiento1(control)
+            print_req1(control)
 
         elif int(inputs) == 3:
             print_req_2(control)
 
         elif int(inputs) == 4:
-            print_req_3(control)
+            resultado_requerimiento3(control)
 
         elif int(inputs) == 5:
             print_req_4(control)

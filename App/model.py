@@ -91,6 +91,22 @@ def data_size(data_structs):
     pass
 
 
+def req_1(data_structs):
+    """
+    Función que soluciona el requerimiento 2
+    """
+    # TODO: Realizar el requerimiento 1
+    pass
+
+
+def req_2(data_structs):
+    """
+    Función que soluciona el requerimiento 2
+    """
+    # TODO: Realizar el requerimiento 2
+    pass
+
+
 def consultar_partidos(nombre_equipo, fecha_inicio, fecha_final):
     """
     Función que soluciona el requerimiento 1
@@ -112,22 +128,6 @@ def consultar_partidos(nombre_equipo, fecha_inicio, fecha_final):
         "listado_partidos": partidos_equipo
     }
     return respuesta 
-
-
-def req_2(data_structs):
-    """
-    Función que soluciona el requerimiento 2
-    """
-    # TODO: Realizar el requerimiento 2
-    pass
-
-
-def req_3(data_structs):
-    """
-    Función que soluciona el requerimiento 3
-    """
-    # TODO: Realizar el requerimiento 3
-    pass
 
 
 def req_4(data_structs):
