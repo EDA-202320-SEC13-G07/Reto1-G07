@@ -36,9 +36,9 @@ def new_controller():
     Crea una instancia del modelo
     """
     control = {
-        "controller": None
+        "model": None
     }
-    control["controller"] = controller.newCatalog()
+    control["model"] = model.newCatalog()
     return control 
 
 
