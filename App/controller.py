@@ -38,7 +38,7 @@ def new_controller():
     control = {
         "model": None
     }
-    control["model"] = model.newCatalog()
+    control["model"] = model.newController()
     return control 
 
 
