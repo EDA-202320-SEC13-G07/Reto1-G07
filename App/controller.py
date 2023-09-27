@@ -31,35 +31,72 @@ El controlador se encarga de mediar entre la vista y el modelo.
 """
 
 
-def new_controller():
+def new_controller(choice):
     """
     Crea una instancia del modelo
     """
-    control = {
-        "model": None
-    }
-    control["model"] = model.newCatalog()
-    return control 
+    #TODO: Llamar la función del modelo que crea las estructuras de datos
+    Controlador = { "model": None}
+
+    Controlador["model"] = model.new_data_structs(choice)
+
+    return Controlador
+
 
 
 # Funciones para la carga de datos
 
-def load_data(control, filename):
+def load_data(control, size):
     """
     Carga los datos del reto
     """
     # TODO: Realizar la carga de datos
-    pass
+
+    control = control["model"]
+
+    results = load_results(control,size)
+
+    scorers = load_scorers(control,size)
+
+    shootouts = load_shootouts(control,size)
+
+    return results,scorers,shootouts
+
+def load_results(data_structs,size):
+    data_results = cf.data_dir + "football/results-utf8-"+str(size)+".csv"
+    input_file = csv.DictReader(open(data_results, encoding ="utf-8"))
+    for result in input_file:
+       result = model.new_data_results(result)
+       model.add_data(data_structs["results"],result)
+    return lt.size(data_structs["results"])
+
+def load_scorers(data_structs,size):
+    data_scorers = cf.data_dir + "football/goalscorers-utf8-"+str(size)+".csv"
+    input_file = csv.DictReader(open(data_scorers, encoding ="utf-8"))
+    for scorer in input_file:
+       scorer = model.new_data_goalscorers(scorer)
+       model.add_data(data_structs["goalscorers"],scorer)
+    return lt.size(data_structs["goalscorers"])
+
+def load_shootouts(data_structs,size):
+    data_shootouts = cf.data_dir + "football/shootouts-utf8-"+str(size)+".csv"
+    input_file = csv.DictReader(open(data_shootouts, encoding ="utf-8"))
+    for shootout in input_file:
+       model.add_data(data_structs["shootouts"],shootout)
+    return lt.size(data_structs["shootouts"])
+
+
 
 
 # Funciones de ordenamiento
 
-def sort(control):
+def sort_data(control,order):
     """
     Ordena los datos del modelo
     """
     #TODO: Llamar la función del modelo para ordenar los datos
-    pass
+
+    return model.sort(control,order)
 
 
 # Funciones de consulta sobre el catálogo
@@ -72,46 +109,51 @@ def get_data(control, id):
     pass
 
 
-def req_1(control):
+def req_1(control,equipo,condicion,n_numero):
     """
     Retorna el resultado del requerimiento 1
     """
     # TODO: Modificar el requerimiento 1
-    pass
+    return model.req_1(control,equipo,condicion,n_numero)
 
 
-def req_2(control):
+def req_2(control,nombre_jugador,n_numero):
     """
     Retorna el resultado del requerimiento 2
     """
     # TODO: Modificar el requerimiento 2
-    pass
+    return model.req_2(control["model"],nombre_jugador,n_numero)
 
 
-def obtener_resultado_requerimiento3(nombre_equipo, fecha_inicio, fecha_final):
-    return model.consultar_partidos(nombre_equipo, fecha_inicio, fecha_final)
+def req_3(control,high_date,low_date,nombre_equipo):
+    """
+    Retorna el resultado del requerimiento 3
+    """
+    # TODO: Modificar el requerimiento 3
+    return model.req_3(control["model"],high_date,low_date,nombre_equipo)
 
-def req_4(control):
+
+def req_4(control,nombre_torneo,high_date,low_date):
     """
     Retorna el resultado del requerimiento 4
     """
     # TODO: Modificar el requerimiento 4
-    pass
+    return model.req_4(control["model"],nombre_torneo,high_date,low_date)
 
 
-def req_5(control):
+def req_5(control,nombre_jugador,high_date,low_date):
     """
     Retorna el resultado del requerimiento 5
     """
     # TODO: Modificar el requerimiento 5
-    pass
+    return model.req_5(control,nombre_jugador,high_date,low_date)
 
-def req_6(control):
+def req_6(control,nombre_torneo,high_date,low_date,n_numero):
     """
     Retorna el resultado del requerimiento 6
     """
     # TODO: Modificar el requerimiento 6
-    pass
+    return model.req_6(control["model"],nombre_torneo,high_date,low_date,n_numero)
 
 
 def req_7(control):
