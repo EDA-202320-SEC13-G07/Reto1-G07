@@ -111,7 +111,11 @@ def get_data(data_structs, id):
     Retorna un dato a partir de su ID
     """
     #TODO: Crear la función para obtener un dato de una lista
-    pass
+    for data in data_structs:
+        if data.get("id") == id:
+            return data
+    
+    return None
 
 
 def data_size(data_structs):
@@ -119,7 +123,8 @@ def data_size(data_structs):
     Retorna el tamaño de la lista de datos
     """
     #TODO: Crear la función para obtener el tamaño de una lista
-    pass
+    return len(data_structs)
+    
 
 
 def req_1(data_structs,equipo,condicion,n_numero):
